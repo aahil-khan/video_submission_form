@@ -34,7 +34,7 @@ export default function Form() {
             "entry.1732285625": formData.link,
             // Add other form fields here
         };
-        const response = await axios.post('http://localhost:3000/api/send_data',submissionData);
+        const response = await axios.post('https://videosubmissionform-aahil-khans-projects.vercel.app/api/send_data',submissionData);
         console.log(response.data);
     }
 
