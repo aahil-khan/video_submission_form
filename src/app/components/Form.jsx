@@ -12,6 +12,18 @@ import { useRouter } from 'next/router';
 const montserrat = Raleway({ subsets: ["latin"] });
 
 export default function Form() {
+
+  function isScreenSmall() {
+    return window.innerWidth <= 500;
+  }
+
+  const [isSmallScreen, setIsSmallScreen] = React.useState(isScreenSmall());
+
+  React.useEffect(() => {
+    const handleResize = () => setIsSmallScreen(isScreenSmall());
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   
   const [formData, setFormData] = React.useState({
     name: '',
@@ -55,22 +67,23 @@ export default function Form() {
       ...prevState,
       [name]: value,
     }));
+    console.log(isSmallScreen);
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <Box sx={{ width: "70vw", height: "160vh", border: "1px solid #98DED9" , p:6 , borderRadius:8 , boxShadow: '0px 0px 10px 2px rgba(168, 252, 254,0.7)'}} display="flex" flexDirection="column" alignItems="center" justifyContent="top" marginTop={5}>
-        <img style={{ marginTop: "0px" , width:"100%"  , height:"270px" , borderRadius:8}} src="/banner.png" width={100} height={100} alt='image' />
+      <Box sx={{ width: "70vw", height: "100%", border: "1px solid #98DED9" , p:5 , borderRadius:8 , boxShadow: '0px 0px 10px 2px rgba(168, 252, 254,0.7)'}} display="flex" flexDirection="column" alignItems="center" justifyContent="top" marginTop={5}>
+        <img style={{ marginTop: "0px" , width:"100%"  , height:isSmallScreen ? "150px" :"270px" , borderRadius:8}} src={"/banner.png"} width={100} height={100} alt='image' />
         <Box sx={{width : "100%" , mt : "10px", p: 1, borderRadius: 3}} display="flex" flexDirection="column" alignItems="center">
           
           <Box sx={{display:"flex" , flexDirection:"column" , alignItems:"center" , mt:5}}>
             <Typography sx={{color:"#98DED9", fontFamily: montserrat.style , fontSize:"36px"}} level="body1">NAME</Typography>
-            <TextField size='small' sx={{input: { textAlign: 'center' , color: "#98DED9" } , mt:3 , mb:3, backgroundColor: '#193249' , '& .MuiOutlinedInput-root': {'& fieldset': {borderColor: '#98DED9'} ,'&:hover': {backgroundColor: '#131d2b' , transition: 'background-color 0.15s ease-in-out'}} ,boxShadow: '0px 0px 2px 1px rgba(168, 252, 254,0.7)'}} style={{width:"40vw"}} id="name" name="name" variant="outlined" onChange={handleChange} value={formData.name}/>
+            <TextField size='small' sx={{input: { textAlign: 'center' , color: "#98DED9" , fontSize: "19px" } , mt:3 , mb:3, backgroundColor: '#193249' , '& .MuiOutlinedInput-root': {'& fieldset': {borderColor: '#98DED9'} ,'&:hover': {backgroundColor: '#131d2b' , transition: 'background-color 0.15s ease-in-out'}} ,boxShadow: '0px 0px 2px 1px rgba(168, 252, 254,0.7)'}} style={{width:"55vw"}} id="name" name="name" variant="outlined" onChange={handleChange} value={formData.name}/>
           </Box>
 
           <Box sx={{display:"flex" , flexDirection:"column" , alignItems:"center" , mt:5}}>
             <Typography sx={{color:"#98DED9" , fontFamily: montserrat.style , fontSize:"36px"}} level="body1">EMAIL</Typography>
-            <TextField size='small' sx={{input: { textAlign: 'center' , color: "#98DED9" } , mt:3 , mb:3 , backgroundColor: '#193249' , '& .MuiOutlinedInput-root': {'& fieldset': {borderColor: '#98DED9'} ,'&:hover': {backgroundColor: '#131d2b' , transition: 'background-color 0.15s ease-in-out'}} , boxShadow: '0px 0px 2px 1px rgba(168, 252, 254,0.7)'}} style={{width:"40vw"}} id="email" name="email" variant="outlined" onChange={handleChange} value={formData.email} />
+            <TextField size='small' sx={{input: { textAlign: 'center' , color: "#98DED9" , fontSize: "19px"} , mt:3 , mb:3 , backgroundColor: '#193249' , '& .MuiOutlinedInput-root': {'& fieldset': {borderColor: '#98DED9'} ,'&:hover': {backgroundColor: '#131d2b' , transition: 'background-color 0.15s ease-in-out'}} , boxShadow: '0px 0px 2px 1px rgba(168, 252, 254,0.7)'}} style={{width:"55vw"}} id="email" name="email" variant="outlined" onChange={handleChange} value={formData.email} />
           </Box>
 
           <Box sx={{display:"flex" , flexDirection:"column" , alignItems:"center" , mt:5}}>
@@ -78,13 +91,13 @@ export default function Form() {
 
             <Autocomplete
             sx={{mt:3}}
-            style={{width:"40vw"}}
+            style={{width:"55vw"}}
             size='small'
             id="department"
             name='department'
             options={departments.map((option) => option.name)}
             renderInput={(params) => 
-              <TextField {...params} sx={{input:{color: "#98DED9"} , mb:3, backgroundColor: '#193249' , '& .MuiOutlinedInput-root': {'& fieldset': {borderColor: '#98DED9'} ,'&:hover': {backgroundColor: '#131d2b' , transition: 'background-color 0.15s ease-in-out'}} , boxShadow: '0px 0px 2px 1px rgba(168, 252, 254,0.7)'}} variant="outlined" />
+              <TextField {...params} sx={{input:{color: "#98DED9" , fontSize: "19px"} , mb:3, backgroundColor: '#193249' , '& .MuiOutlinedInput-root': {'& fieldset': {borderColor: '#98DED9'} ,'&:hover': {backgroundColor: '#131d2b' , transition: 'background-color 0.15s ease-in-out'}} , boxShadow: '0px 0px 2px 1px rgba(168, 252, 254,0.7)'}} variant="outlined" />
             }
             paperprops={{
               style: {
@@ -106,11 +119,11 @@ export default function Form() {
           </Box>
 
         <Box sx={{display:"flex" , flexDirection:"column" , alignItems:"center" , mt:5}}>
-          <Typography sx={{color:"#98DED9" , fontFamily: montserrat.style , fontSize:"36px"}} level="body1">COURSE NAME</Typography>
+          <Typography sx={{color:"#98DED9" ,textAlign:"center" , fontFamily: montserrat.style , fontSize:"36px"}} level="body1">COURSE NAME</Typography>
 
           <Autocomplete
             sx={{mt:3}}
-            style={{width:"40vw"}}
+            style={{width:"55vw"}}
             size='small'
             id="course_name"
             name='course_name'
@@ -120,7 +133,7 @@ export default function Form() {
               course_name: newValue,
             }))}
             value={formData.course_name}
-            renderInput={(params) => <TextField {...params} sx={{input:{color: "#98DED9"} , mb:3, backgroundColor: '#193249' , '& .MuiOutlinedInput-root': {'& fieldset': {borderColor: '#98DED9'} ,'&:hover': {backgroundColor: '#131d2b' , transition: 'background-color 0.15s ease-in-out'}} , boxShadow: '0px 0px 2px 1px rgba(168, 252, 254,0.7)'}} variant="outlined" />}
+            renderInput={(params) => <TextField {...params} sx={{input:{color: "#98DED9", fontSize: "19px"} , mb:3, backgroundColor: '#193249' , '& .MuiOutlinedInput-root': {'& fieldset': {borderColor: '#98DED9'} ,'&:hover': {backgroundColor: '#131d2b' , transition: 'background-color 0.15s ease-in-out'}} , boxShadow: '0px 0px 2px 1px rgba(168, 252, 254,0.7)'}} variant="outlined" />}
             paperprops={{
               style: {
                 backgroundColor: "#FFF",
@@ -138,10 +151,10 @@ export default function Form() {
 
         <Box sx={{display:"flex" , flexDirection:"column" , alignItems:"center" , mt:5}}>
           <Typography sx={{color:"#98DED9" , fontFamily: montserrat.style , fontSize:"36px"}} level="body1">DRIVE LINK</Typography>
-          <TextField size='small' sx={{input: { textAlign: 'center'  , color: "#98DED9"}  , mt:3 , mb:3, backgroundColor: '#193249' , '& .MuiOutlinedInput-root': {'& fieldset': {borderColor: '#98DED9'} ,'&:hover': {backgroundColor: '#131d2b' , transition: 'background-color 0.15s ease-in-out'}}  , boxShadow: '0px 0px 2px 1px rgba(168, 252, 254,0.7)'}} style={{width:"40vw"}} id="link" name="link" variant="outlined" onChange={handleChange} value={formData.link}/>
+          <TextField size='small' sx={{input: { textAlign: 'center'  , color: "#98DED9", fontSize: "19px"}  , mt:3 , mb:3, backgroundColor: '#193249' , '& .MuiOutlinedInput-root': {'& fieldset': {borderColor: '#98DED9'} ,'&:hover': {backgroundColor: '#131d2b' , transition: 'background-color 0.15s ease-in-out'}}  , boxShadow: '0px 0px 2px 1px rgba(168, 252, 254,0.7)'}} style={{width:"55vw"}} id="link" name="link" variant="outlined" onChange={handleChange} value={formData.link}/>
         </Box>
 
-        <Button type='submit' sx={{width:"25vw", height:"60px" , fontSize:"32px"  , fontWeight:"bold", letterSpacing:"0" ,  backgroundColor:"#ADD8E6" , color:"#193249" , mt:6 , '&:hover': {backgroundColor: '#ffffff' , transition: 'background-color 0.15s ease-in-out'} , boxShadow: '5px 8px 10px rgba(0, 0, 0, 1)'}}>Submit</Button>
+        <Button type='submit' sx={{width:"35vw", height:"60px" , fontSize:"32px"  , fontWeight:"bold", letterSpacing:"0" ,  backgroundColor:"#ADD8E6" , color:"#193249" , mt:6 , '&:hover': {backgroundColor: '#ffffff' , transition: 'background-color 0.15s ease-in-out'} , boxShadow: '5px 8px 10px rgba(0, 0, 0, 1)'}}>Submit</Button>
         </Box>
       </Box>
     </form>
