@@ -76,7 +76,7 @@ export default function Form() {
   return (
     <form onSubmit={handleSubmit}>
       <Box sx={{ width: "70vw", height: "100%", border: "1px solid #98DED9" , p:5 , borderRadius:8 , boxShadow: '0px 0px 10px 2px rgba(168, 252, 254,0.7)'}} display="flex" flexDirection="column" alignItems="center" justifyContent="top" marginTop={5}>
-        <img style={{ marginTop: "0px" , width:"100%"  , height:isSmallScreen ? "150px" :"270px" , borderRadius:8}} src={"/banner.png"} width={100} height={100} alt='image' />
+        <img style={{ marginTop: "0px" , width:"100%"  , height:isSmallScreen ? "90px" :"270px" , borderRadius:8}} src={"/banner.png"} width={100} height={100} alt='image' />
         <Box sx={{width : "100%" , mt : "10px", p: 1, borderRadius: 3}} display="flex" flexDirection="column" alignItems="center">
           
           <Box sx={{display:"flex" , flexDirection:"column" , alignItems:"center" , mt:5}}>
