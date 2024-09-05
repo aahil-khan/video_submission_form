@@ -7,6 +7,7 @@ import departments from './departments';
 import Autocomplete from '@mui/material/Autocomplete';
 import courses from './courses';
 import {Raleway} from 'next/font/google';
+import { useRouter } from 'next/router';
 
 const montserrat = Raleway({ subsets: ["latin"] });
 
@@ -42,7 +43,7 @@ export default function Form() {
             "entry.1163931876": formData.link,
         };
         const response = await axios.post('https://videosubmissionform-aahil-khans-projects.vercel.app/api/send_data',submissionData);
-        console.log(response.data);
+        window.location.href = '/submit';
     }
 
     
@@ -64,12 +65,12 @@ export default function Form() {
           
           <Box sx={{display:"flex" , flexDirection:"column" , alignItems:"center" , mt:5}}>
             <Typography sx={{color:"#98DED9", fontFamily: montserrat.style , fontSize:"36px"}} level="body1">NAME</Typography>
-            <TextField size='small' sx={{input: { textAlign: 'center' , color: "#98DED9" } , mt:3 , mb:3, backgroundColor: '#193249' , '& .MuiOutlinedInput-root': {'& fieldset': {borderColor: '#98DED9'} ,'&:hover': {backgroundColor: '#131d2b' , transition: 'background-color 0.15s ease-in-out'}} ,boxShadow: '0px 0px 2px 0.5px rgba(168, 252, 254,0.7)'}} style={{width:"40vw"}} id="name" name="name" variant="outlined" onChange={handleChange} value={formData.name}/>
+            <TextField size='small' sx={{input: { textAlign: 'center' , color: "#98DED9" } , mt:3 , mb:3, backgroundColor: '#193249' , '& .MuiOutlinedInput-root': {'& fieldset': {borderColor: '#98DED9'} ,'&:hover': {backgroundColor: '#131d2b' , transition: 'background-color 0.15s ease-in-out'}} ,boxShadow: '0px 0px 2px 1px rgba(168, 252, 254,0.7)'}} style={{width:"40vw"}} id="name" name="name" variant="outlined" onChange={handleChange} value={formData.name}/>
           </Box>
 
           <Box sx={{display:"flex" , flexDirection:"column" , alignItems:"center" , mt:5}}>
             <Typography sx={{color:"#98DED9" , fontFamily: montserrat.style , fontSize:"36px"}} level="body1">EMAIL</Typography>
-            <TextField size='small' sx={{input: { textAlign: 'center' , color: "#98DED9" } , mt:3 , mb:3 , backgroundColor: '#193249' , '& .MuiOutlinedInput-root': {'& fieldset': {borderColor: '#98DED9'} ,'&:hover': {backgroundColor: '#131d2b' , transition: 'background-color 0.15s ease-in-out'}} , boxShadow: '0px 0px 2px 0.5px rgba(168, 252, 254,0.7)'}} style={{width:"40vw"}} id="email" name="email" variant="outlined" onChange={handleChange} value={formData.email} />
+            <TextField size='small' sx={{input: { textAlign: 'center' , color: "#98DED9" } , mt:3 , mb:3 , backgroundColor: '#193249' , '& .MuiOutlinedInput-root': {'& fieldset': {borderColor: '#98DED9'} ,'&:hover': {backgroundColor: '#131d2b' , transition: 'background-color 0.15s ease-in-out'}} , boxShadow: '0px 0px 2px 1px rgba(168, 252, 254,0.7)'}} style={{width:"40vw"}} id="email" name="email" variant="outlined" onChange={handleChange} value={formData.email} />
           </Box>
 
           <Box sx={{display:"flex" , flexDirection:"column" , alignItems:"center" , mt:5}}>
@@ -83,7 +84,7 @@ export default function Form() {
             name='department'
             options={departments.map((option) => option.name)}
             renderInput={(params) => 
-              <TextField {...params} sx={{input:{color: "#98DED9"} , mb:3, backgroundColor: '#193249' , '& .MuiOutlinedInput-root': {'& fieldset': {borderColor: '#98DED9'} ,'&:hover': {backgroundColor: '#131d2b' , transition: 'background-color 0.15s ease-in-out'}} , boxShadow: '0px 0px 2px 0.5px rgba(168, 252, 254,0.7)'}} variant="outlined" />
+              <TextField {...params} sx={{input:{color: "#98DED9"} , mb:3, backgroundColor: '#193249' , '& .MuiOutlinedInput-root': {'& fieldset': {borderColor: '#98DED9'} ,'&:hover': {backgroundColor: '#131d2b' , transition: 'background-color 0.15s ease-in-out'}} , boxShadow: '0px 0px 2px 1px rgba(168, 252, 254,0.7)'}} variant="outlined" />
             }
             paperprops={{
               style: {
@@ -92,7 +93,8 @@ export default function Form() {
             }}
             ListboxProps={{
               style: {
-                backgroundColor: "#98DED9",
+                backgroundColor: "#263752",
+                color:"#98DED9"
               },
             }}
             onChange={(event, newValue) => setFormData((prevState) => ({
@@ -118,7 +120,7 @@ export default function Form() {
               course_name: newValue,
             }))}
             value={formData.course_name}
-            renderInput={(params) => <TextField {...params} sx={{input:{color: "#98DED9"} , mb:3, backgroundColor: '#193249' , '& .MuiOutlinedInput-root': {'& fieldset': {borderColor: '#98DED9'} ,'&:hover': {backgroundColor: '#131d2b' , transition: 'background-color 0.15s ease-in-out'}} , boxShadow: '0px 0px 2px 0.5px rgba(168, 252, 254,0.7)'}} variant="outlined" />}
+            renderInput={(params) => <TextField {...params} sx={{input:{color: "#98DED9"} , mb:3, backgroundColor: '#193249' , '& .MuiOutlinedInput-root': {'& fieldset': {borderColor: '#98DED9'} ,'&:hover': {backgroundColor: '#131d2b' , transition: 'background-color 0.15s ease-in-out'}} , boxShadow: '0px 0px 2px 1px rgba(168, 252, 254,0.7)'}} variant="outlined" />}
             paperprops={{
               style: {
                 backgroundColor: "#FFF",
@@ -126,7 +128,8 @@ export default function Form() {
             }}
             ListboxProps={{
               style: {
-                backgroundColor: "#98DED9",
+                backgroundColor: "#263752",
+                color:"#98DED9"
               },
             }}
           />
@@ -135,7 +138,7 @@ export default function Form() {
 
         <Box sx={{display:"flex" , flexDirection:"column" , alignItems:"center" , mt:5}}>
           <Typography sx={{color:"#98DED9" , fontFamily: montserrat.style , fontSize:"36px"}} level="body1">DRIVE LINK</Typography>
-          <TextField size='small' sx={{input: { textAlign: 'center'  , color: "#98DED9"}  , mt:3 , mb:3, backgroundColor: '#193249' , '& .MuiOutlinedInput-root': {'& fieldset': {borderColor: '#98DED9'} ,'&:hover': {backgroundColor: '#131d2b' , transition: 'background-color 0.15s ease-in-out'}}  , boxShadow: '0px 0px 2px 0.5px rgba(168, 252, 254,0.7)'}} style={{width:"40vw"}} id="link" name="link" variant="outlined" onChange={handleChange} value={formData.link}/>
+          <TextField size='small' sx={{input: { textAlign: 'center'  , color: "#98DED9"}  , mt:3 , mb:3, backgroundColor: '#193249' , '& .MuiOutlinedInput-root': {'& fieldset': {borderColor: '#98DED9'} ,'&:hover': {backgroundColor: '#131d2b' , transition: 'background-color 0.15s ease-in-out'}}  , boxShadow: '0px 0px 2px 1px rgba(168, 252, 254,0.7)'}} style={{width:"40vw"}} id="link" name="link" variant="outlined" onChange={handleChange} value={formData.link}/>
         </Box>
 
         <Button type='submit' sx={{width:"25vw", height:"60px" , fontSize:"32px"  , fontWeight:"bold", letterSpacing:"0" ,  backgroundColor:"#ADD8E6" , color:"#193249" , mt:6 , '&:hover': {backgroundColor: '#ffffff' , transition: 'background-color 0.15s ease-in-out'} , boxShadow: '5px 8px 10px rgba(0, 0, 0, 1)'}}>Submit</Button>
