@@ -8,14 +8,16 @@ import departments from './departments';
 import Autocomplete from '@mui/material/Autocomplete';
 import courses from './courses';
 import {Raleway} from 'next/font/google';
-import { useRouter } from 'next/router';
 
 const montserrat = Raleway({ subsets: ["latin"] });
 
 export default function Form() {
 
   function isScreenSmall() {
-    return window.innerWidth <= 500;
+    if(typeof window !== 'undefined'){
+      return window.innerWidth <= 500;
+    }
+    return false;
   }
 
   const [isSmallScreen, setIsSmallScreen] = React.useState(isScreenSmall());
