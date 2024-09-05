@@ -7,6 +7,9 @@ import axios from 'axios';
 import departments from './departments';
 import Autocomplete from '@mui/material/Autocomplete';
 import courses from './courses';
+import { Raleway} from 'next/font/google';
+
+const montserrat = Raleway({ subsets: ["latin"] });
 
 export default function Form() {
   const [formData, setFormData] = React.useState({
@@ -51,65 +54,90 @@ export default function Form() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Box sx={{ backgroundColor: "#CEDF9F", width: "70vw", height: "500vh" }} display="flex" flexDirection="column" alignItems="center" justifyContent="top" marginTop={5}>
-        <Image style={{ marginTop: "110px" , width:"100%"  , height:"250px"}} src="/safed.jpeg" width={100} height={100} alt='image' />
-        <Box sx={{width : "100%" , mt : "10px"}} display="flex" flexDirection="column" alignItems="center">
-          <Typography sx={{mt:5 }} level="title-lg">NAME</Typography>
+      <Box sx={{ width: "70vw", height: "160vh", border: "1px solid #98DED9" , p:6 , borderRadius:8}} display="flex" flexDirection="column" alignItems="center" justifyContent="top" marginTop={5}>
+        <Image style={{ marginTop: "0px" , width:"100%"  , height:"270px" , borderRadius:8}} src="/video.gif" width={100} height={100} alt='image' />
+        <Box sx={{width : "100%" , mt : "10px", p: 1, borderRadius: 3}} display="flex" flexDirection="column" alignItems="center">
+          
+          <Box sx={{display:"flex" , flexDirection:"column" , alignItems:"center" , mt:5}}>
+            <Typography sx={{color:"#98DED9", fontFamily: montserrat.style , fontSize:"36px"}} level="body1">NAME</Typography>
+            <TextField size='small' sx={{input: { textAlign: 'center' , color: "#98DED9" } , mt:3 , mb:3 , '& .MuiOutlinedInput-root': {'& fieldset': {borderColor: '#98DED9', borderRadius: '10px'} ,'&:hover': {backgroundColor: '#ffffff' , transition: 'background-color 0.3s ease-in-out'}} , boxShadow: '5px 8px 10px rgba(0, 0, 0, 1)'}} style={{width:"40vw"}} id="name" name="name" variant="outlined" onChange={handleChange} value={formData.name}/>
+          </Box>
 
-          <TextField size='small' sx={{input: { textAlign: 'center' } , mt:1}} style={{width:"40vw"}} id="name" name="name" variant="outlined" onChange={handleChange} value={formData.name} helperText="whas ur name bitch?"/>
+          <Box sx={{display:"flex" , flexDirection:"column" , alignItems:"center" , mt:5}}>
+            <Typography sx={{color:"#98DED9" , fontFamily: montserrat.style , fontSize:"36px"}} level="body1">EMAIL</Typography>
+            <TextField size='small' sx={{input: { textAlign: 'center' , color: "#98DED9" } , mt:3 , mb:3 , '& .MuiOutlinedInput-root': {'& fieldset': {borderColor: '#98DED9', borderRadius: '10px'} ,'&:hover': {backgroundColor: '#ffffff' , transition: 'background-color 0.3s ease-in-out'}} , boxShadow: '5px 8px 10px rgba(0, 0, 0, 1)'}} style={{width:"40vw"}} id="email" name="email" variant="outlined" onChange={handleChange} value={formData.email} />
+          </Box>
 
-          <Typography sx={{mt:5}} level="title-lg">EMAIL</Typography>
+          <Box sx={{display:"flex" , flexDirection:"column" , alignItems:"center" , mt:5}}>
+            <Typography sx={{color:"#98DED9", fontFamily: montserrat.style , fontSize:"36px"}} level="body1">DEPARTMENT</Typography>
 
-          <TextField size='small' sx={{input: { textAlign: 'center' } , mt:1}} style={{width:"40vw"}} id="email" name="email" variant="outlined" onChange={handleChange} value={formData.email} helperText="ever heard of emails?"/>
+            <Autocomplete
+            sx={{mt:3}}
+            style={{width:"40vw"}}
+            size='small'
+            id="department"
+            name='department'
+            options={departments.map((option) => option.name)}
+            renderInput={(params) => 
+              <TextField {...params} sx={{input:{color: "#98DED9"} , mb:3 , '& .MuiOutlinedInput-root': {'& fieldset': {borderColor: '#98DED9', borderRadius: '10px'} ,'&:hover': {backgroundColor: '#ffffff' , transition: 'background-color 0.3s ease-in-out'}} , boxShadow: '5px 8px 10px rgba(0, 0, 0, 1)'}} variant="outlined" />
+            }
+            PaperProps={{
+              style: {
+                backgroundColor: "#FFF",
+              },
+            }}
+            ListboxProps={{
+              style: {
+                backgroundColor: "#98DED9",
+              },
+            }}
+            onChange={(event, newValue) => setFormData((prevState) => ({
+              ...prevState,
+              department: newValue,
+            }))}
+            value={formData.department}
+          />
+          </Box>
 
-          <Typography sx={{mt:5}} level="title-lg">DEPARTMENT</Typography>
+        <Box sx={{display:"flex" , flexDirection:"column" , alignItems:"center" , mt:5}}>
+          <Typography sx={{color:"#98DED9" , fontFamily: montserrat.style , fontSize:"36px"}} level="body1">COURSE NAME</Typography>
 
           <Autocomplete
-          sx={{mt:1}}
-          style={{width:"40vw"}}
-          size='small'
-          id="department"
-          name='department'
-          options={departments.map((option) => option.name)}
-          renderInput={(params) => 
-            <TextField {...params} helperText="Which department are you rotting your life away in?" variant="outlined" />
-          }
-          PaperProps={{
-            style: {
-              backgroundColor: "#CEDF9F",
-            },
-          }}
-          onChange={(event, newValue) => setFormData((prevState) => ({
-            ...prevState,
-            department: newValue,
-          }))}
-          value={formData.department}
-        />
+            sx={{mt:3}}
+            style={{width:"40vw"}}
+            size='small'
+            id="course_name"
+            name='course_name'
+            options={courses.map((option) => option.name)}
+            onChange={(event, newValue) => setFormData((prevState) => ({
+              ...prevState,
+              course_name: newValue,
+            }))}
+            value={formData.course_name}
+            renderInput={(params) => <TextField {...params} sx={{input:{color: "#98DED9"} , mb:3 , '& .MuiOutlinedInput-root': {'& fieldset': {borderColor: '#98DED9', borderRadius: '10px'} ,'&:hover': {backgroundColor: '#ffffff' , transition: 'background-color 0.3s ease-in-out'}} , boxShadow: '5px 8px 10px rgba(0, 0, 0, 1)'}} variant="outlined" />}
+            PaperProps={{
+              style: {
+                backgroundColor: "#FFF",
+              },
+            }}
+            ListboxProps={{
+              style: {
+                backgroundColor: "#98DED9",
+              },
+            }}
+          />
+        </Box>
 
-        <Typography sx={{mt:5}} level="title-lg">COURSE NAME</Typography>
 
-        <Autocomplete
-          sx={{ mt:1 }}
-          style={{width:"40vw"}}
-          size='small'
-          id="course_name"
-          name='course_name'
-          options={courses.map((option) => option.name)}
-          onChange={(event, newValue) => setFormData((prevState) => ({
-            ...prevState,
-            course_name: newValue,
-          }))}
-          value={formData.course_name}
-          renderInput={(params) => <TextField {...params} helperText="What's the course you ofc suck at teaching?" variant="outlined" />}
-        />
+        <Box sx={{display:"flex" , flexDirection:"column" , alignItems:"center" , mt:5}}>
+          <Typography sx={{color:"#98DED9" , fontFamily: montserrat.style , fontSize:"36px"}} level="body1">DRIVE LINK</Typography>
+          <TextField size='small' sx={{input: { textAlign: 'center'  , color: "#98DED9"}  , mt:3 , mb:3 , '& .MuiOutlinedInput-root': {'& fieldset': {borderColor: '#98DED9' , borderRadius: '10px'} ,'&:hover': {backgroundColor: '#ffffff' , transition: 'background-color 0.3s ease-in-out'}}  , boxShadow: '5px 8px 10px rgba(0, 0, 0, 1)'}} style={{width:"40vw"}} id="link" name="link" variant="outlined" onChange={handleChange} value={formData.link}/>
+        </Box>
 
-        <Typography sx={{mt:5}} level="title-lg">LINK</Typography>
-
-        <TextField size='small' sx={{input: { textAlign: 'center' } , mt:1}} style={{width:"40vw"}} id="link" name="link" variant="outlined" onChange={handleChange} value={formData.link} helperText="Please enter the Drive link of the master folder"/>
-
-        <Button type='submit'>Submit</Button>
+        <Button type='submit' sx={{width:"40vw", height:"60px" , fontSize:"24px" , backgroundColor:"#ADD8E6" , color:"#193249" , borderRadius:"10px" , mt:6 , '&:hover': {backgroundColor: '#ffffff' , transition: 'background-color 0.3s ease-in-out'}}}>Submit</Button>
         </Box>
       </Box>
     </form>
   );
 }
+
