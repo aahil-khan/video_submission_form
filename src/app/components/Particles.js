@@ -188,7 +188,7 @@ const ParticlesComponent = (props) => {
           }
         },
         "color": {
-          "value": "#0B2F9F",
+          "value": "#ffffff",
           "animation": {
             "h": {
               "count": 0,

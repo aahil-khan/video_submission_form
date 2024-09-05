@@ -6,7 +6,7 @@ export async function POST(request){
     const submissionData = await request.json();
     try {
         const response = await axios.post(
-          'https://docs.google.com/forms/u/0/d/e/1FAIpQLSdklICZm85wuXr5IDIY4d-uoxQue3Y_e0MegMpg1jn38cCI6A/formResponse',
+          'https://docs.google.com/forms/u/0/d/e/1FAIpQLScDMrk79MTevOeJK1xTqPP1UW9f7az0oFrPJDBlnERvGmzjYw/formResponse',
         qs.stringify(submissionData),
         {
             headers: {
