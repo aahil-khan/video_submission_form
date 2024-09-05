@@ -15,7 +15,7 @@ export default function Form() {
 
   function isScreenSmall() {
     if(typeof window !== 'undefined'){
-      return window.innerWidth <= 500;
+      return window.innerWidth <= 800;
     }
     return false;
   }
