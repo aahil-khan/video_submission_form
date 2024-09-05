@@ -100,7 +100,7 @@ export default function Form() {
             name='department'
             options={departments.map((option) => option.name)}
             renderInput={(params) => 
-              <TextField {...params} sx={{input:{color: "#98DED9" , fontSize: "19px"} , mb:3, backgroundColor: '#193249' , '& .MuiOutlinedInput-root': {'& fieldset': {borderColor: '#98DED9'} ,'&:hover': {backgroundColor: '#131d2b' , transition: 'background-color 0.15s ease-in-out'}} , boxShadow: '0px 0px 2px 1px rgba(168, 252, 254,0.7)'}} variant="outlined" />
+              <TextField {...params} sx={{input:{color: "#98DED9" , fontSize: "19px" , textAlign: 'center'} , mb:3, backgroundColor: '#193249' , '& .MuiOutlinedInput-root': {'& fieldset': {borderColor: '#98DED9'} ,'&:hover': {backgroundColor: '#131d2b' , transition: 'background-color 0.15s ease-in-out'}} , boxShadow: '0px 0px 2px 1px rgba(168, 252, 254,0.7)'}} variant="outlined" />
             }
             paperprops={{
               style: {
@@ -136,7 +136,7 @@ export default function Form() {
               course_name: newValue,
             }))}
             value={formData.course_name}
-            renderInput={(params) => <TextField {...params} sx={{input:{color: "#98DED9", fontSize: "19px"} , mb:3, backgroundColor: '#193249' , '& .MuiOutlinedInput-root': {'& fieldset': {borderColor: '#98DED9'} ,'&:hover': {backgroundColor: '#131d2b' , transition: 'background-color 0.15s ease-in-out'}} , boxShadow: '0px 0px 2px 1px rgba(168, 252, 254,0.7)'}} variant="outlined" />}
+            renderInput={(params) => <TextField {...params} sx={{input:{color: "#98DED9", fontSize: "19px" , textAlign:"center"} , mb:3, backgroundColor: '#193249' , '& .MuiOutlinedInput-root': {'& fieldset': {borderColor: '#98DED9'} ,'&:hover': {backgroundColor: '#131d2b' , transition: 'background-color 0.15s ease-in-out'}} , boxShadow: '0px 0px 2px 1px rgba(168, 252, 254,0.7)'}} variant="outlined" />}
             paperprops={{
               style: {
                 backgroundColor: "#FFF",
@@ -157,7 +157,7 @@ export default function Form() {
           <TextField size='small' sx={{input: { textAlign: 'center'  , color: "#98DED9", fontSize: "19px"}  , mt:3 , mb:3, backgroundColor: '#193249' , '& .MuiOutlinedInput-root': {'& fieldset': {borderColor: '#98DED9'} ,'&:hover': {backgroundColor: '#131d2b' , transition: 'background-color 0.15s ease-in-out'}}  , boxShadow: '0px 0px 2px 1px rgba(168, 252, 254,0.7)'}} style={{width:"55vw"}} id="link" name="link" variant="outlined" onChange={handleChange} value={formData.link}/>
         </Box>
 
-        <Button type='submit' sx={{width:"35vw", height:"60px" , fontSize:"32px"  , fontWeight:"bold", letterSpacing:"0" ,  backgroundColor:"#ADD8E6" , color:"#193249" , mt:6 , '&:hover': {backgroundColor: '#ffffff' , transition: 'background-color 0.15s ease-in-out'} , boxShadow: '5px 8px 10px rgba(0, 0, 0, 1)'}}>Submit</Button>
+        <Button type='submit' sx={{width:"35vw", height:"60px" , fontSize:"32px"  , fontWeight:"bold", letterSpacing:"0" ,  backgroundColor:"#ADD8E6" , color:"#193249" , mt:6 , '&:hover': {backgroundColor: '#161d2a' , color:"#98DED9" , transition: 'background-color 0.15s ease-in-out'} , boxShadow: '5px 8px 10px rgba(0, 0, 0, 1)'}}>Submit</Button>
         </Box>
       </Box>
     </form>
