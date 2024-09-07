@@ -1,64 +1,49 @@
 const departments = [
-    {   
+    {
         key : 1,
-        name : "Department of Chemistry & Biochemistry",
+        name : "Centre for Training and Development",
     },
-    {   
+    {
         key : 2,
-        name : "Department of Energy and Environment",
-    },
-    {   
-        key : 3,
-        name : "Department of Humanities & Social Sciences",
-    },
-    {
-        key : 4,
-        name : "Department of Mathematics",
-    },
-    {
-        key : 5,
-        name : "Department of Physics & Materials Science",
-    },
-    {
-        key : 6,
-        name : "L. M. Thapar School of Management",
-    },
-    {
-        key : 7,
-        name : "Thapar School of Liberal Arts & Sciences",
-    },
-    {
-        key : 8,
-        name : "Basic & Engineering Sciences",
-    },
-    {
-        key : 9,
         name : "Chemical Engineering",
     },
     {
-        key : 10,
+        key : 3,
         name : "Civil Engineering",
     },
     {
-        key : 11,
+        key : 4,
+        name : "Common Subjects and Miscellaneous",
+    },
+    {
+        key : 5,
         name : "Computer Science & Engineering",
     },
     {
-        key : 12,
+        key : 6,
         name : "Department of Biotechnology",
     },
     {
-        key : 13,
+        key : 7,
         name : "Electrical & Instrumentation Engineering",
     },
     {
-        key : 14,
+        key : 8,
         name : "Electronics & Communication Engineering",
     },
     {
-        key : 15,
+        key : 9,
+        name : "Experiential Learning Centre",
+    },
+    {
+        key : 10,
         name : "Mechanical Engineering Department",
+    },
+    {
+        key: 11,
+        name: "Venture Lab",
     }
 ]
 
 export default departments;
+
