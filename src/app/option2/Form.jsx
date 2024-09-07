@@ -134,31 +134,31 @@ export default function Form() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Box sx={{ width: "70vw", height: "100%", p: 4}} display="flex" flexDirection="column" alignItems="center" justifyContent="top" marginTop={5}>
+      <Box sx={{ width: "70vw" , height: "100%", p: 4}} display="flex" flexDirection="column" alignItems="center" justifyContent="top" marginTop={5}>
         <img style={{ marginTop: "0px" , width:"110%"  , height:isSmallScreen ? "90px" :"290px" , boxShadow: '0px 0px 10px 5px rgba(24, 24, 24,0.7)'}} src={isSmallScreen ?"/banner-small.png" :"/banneroption2.png"} width={100} height={100} alt='image' />
         <Box sx={{width : "100%" , mt : "10px", p: 1}} display="flex" flexDirection="column" alignItems="center">
           
-          <Box sx={{display:"flex" , flexDirection:"row" , justifyContent:"space-between" ,gap:4,  alignItems:"center" , mt:5}}>
+          <Box sx={{display:"flex" , flexDirection:"row" , justifyContent:"space-between" ,gap:19,  alignItems:"center" , mt:5}}>
             <Typography sx={{color:"#cad9d2", fontFamily: montserrat.style , fontSize:"36px" , textShadow: "2px 2px 4px #000000"}} level="body1">Name of Faculty</Typography>
-            <TextField size='small' sx={{input: { textAlign: 'left' , color: "#c66450" , fontSize: "21px" , fontWeight:"700" } , mt:3 , mb:3, backgroundColor: '#cad9d2' , '& .MuiOutlinedInput-root': {'& fieldset': {border : "none"} ,'&:hover': {backgroundColor: 'rgba(0,0,0,0.5)',input : {color: "#EEEDEB"} , transition: 'background-color 0.15s ease-in-out'}} , boxShadow: '5px 5px 8px 1px rgba(0, 0, 0, 1)'}} style={{width:"55vw"}} id="name" name="name" variant="outlined" onChange={handleChange} value={formData.name}/>
+            <TextField size='small' sx={{input: { textAlign: 'left' , color: "#c66450" , fontSize: "21px" , fontWeight:"700" } , mt:3 , mb:3, backgroundColor: '#cad9d2' , '& .MuiOutlinedInput-root': {'& fieldset': {border : "none"} ,'&:hover': {backgroundColor: 'rgba(0,0,0,0.5)',input : {color: "#EEEDEB"} , transition: 'background-color 0.15s ease-in-out'}} , boxShadow: '5px 5px 8px 1px rgba(0, 0, 0, 1)'}} style={{width:"40vw"}} id="name" name="name" variant="outlined" onChange={handleChange} value={formData.name}/>
           </Box>
 
-          <Box sx={{display:"flex" , flexDirection:"row", justifyContent:"space-between" ,gap:24 , alignItems:"center" , mt:5}}>
+          <Box sx={{display:"flex" , flexDirection:"row", justifyContent:"space-between" ,gap:42 , alignItems:"center" , mt:5}}>
             <Typography sx={{color:"#cad9d2" , fontFamily: montserrat.style , fontSize:"36px" , textShadow: "2px 2px 4px #000000"}} level="body1">Email</Typography>
-            <TextField size='small' sx={{input: { textAlign: 'left' , color: "#c66450" , fontSize: "21px" , fontWeight:"700" } , mt:3 , mb:3, backgroundColor: '#cad9d2' , '& .MuiOutlinedInput-root': {'& fieldset': {border : "none"} ,'&:hover': {backgroundColor: 'rgba(0,0,0,0.5)',input : {color: "#EEEDEB"} , transition: 'background-color 0.15s ease-in-out'}} , boxShadow: '5px 5px 8px 1px rgba(0, 0, 0, 1)'}} style={{width:"50vw"}} id="email" name="email" variant="outlined" onChange={handleChange} value={formData.email}/>
+            <TextField size='small' sx={{input: { textAlign: 'left' , color: "#c66450" , fontSize: "21px" , fontWeight:"700" } , mt:3 , mb:3, backgroundColor: '#cad9d2' , '& .MuiOutlinedInput-root': {'& fieldset': {border : "none"} ,'&:hover': {backgroundColor: 'rgba(0,0,0,0.5)',input : {color: "#EEEDEB"} , transition: 'background-color 0.15s ease-in-out'}} , boxShadow: '5px 5px 8px 1px rgba(0, 0, 0, 1)'}} style={{width:"40vw"}} id="email" name="email" variant="outlined" onChange={handleChange} value={formData.email}/>
           </Box>
 
-          <Box sx={{display:"flex" , flexDirection:"row", justifyContent:"space-between" ,gap:6 , alignItems:"center" , mt:5}}>
+          <Box sx={{display:"flex" , flexDirection:"row", justifyContent:"space-between" ,gap:21 , alignItems:"center" , mt:5}}>
             <Typography sx={{color:"#cad9d2" , fontFamily: montserrat.style , fontSize:"36px" , textShadow: "2px 2px 4px #000000"}} level="body1">Phone Number</Typography>
-            <TextField size='small' sx={{input: { textAlign: 'left' , color: "#c66450" , fontSize: "21px", fontWeight:"700" } , mt:3 , mb:3, backgroundColor: '#cad9d2' , '& .MuiOutlinedInput-root': {'& fieldset': {border : "none"} ,'&:hover': {backgroundColor: 'rgba(0,0,0,0.5)',input : {color: "#EEEDEB"} , transition: 'background-color 0.15s ease-in-out'}} , boxShadow: '5px 5px 8px 1px rgba(0, 0, 0, 1)'}} style={{width:"55vw"}} id="phone" name="phone" variant="outlined" onChange={handleChange} value={formData.phone}/>
+            <TextField size='small' sx={{input: { textAlign: 'left' , color: "#c66450" , fontSize: "21px", fontWeight:"700" } , mt:3 , mb:3, backgroundColor: '#cad9d2' , '& .MuiOutlinedInput-root': {'& fieldset': {border : "none"} ,'&:hover': {backgroundColor: 'rgba(0,0,0,0.5)',input : {color: "#EEEDEB"} , transition: 'background-color 0.15s ease-in-out'}} , boxShadow: '5px 5px 8px 1px rgba(0, 0, 0, 1)'}} style={{width:"40vw"}} id="phone" name="phone" variant="outlined" onChange={handleChange} value={formData.phone}/>
           </Box>
 
-          <Box sx={{display:"flex" , flexDirection:"row", justifyContent:"space-between" ,gap:10 , alignItems:"center" , mt:5}}>
+          <Box sx={{display:"flex" , flexDirection:"row", justifyContent:"space-between" ,gap:27 , alignItems:"center" , mt:5}}>
             <Typography sx={{color:"#cad9d2", fontFamily: montserrat.style , fontSize:"36px" , textShadow: "2px 2px 4px #000000"}} level="body1">Department</Typography>
 
             <Autocomplete
             sx={{mt:3}}
-            style={{width:"50vw"}}
+            style={{width:"40vw"}}
             size='small'
             id="department"
             name='department'
@@ -171,7 +171,7 @@ export default function Form() {
             }}
             ListboxProps={{
               style: {
-                backgroundColor: "#edeff3",
+                backgroundColor: "#cad9d2",
                 color:"#c66450"
               },
             }}
@@ -180,12 +180,12 @@ export default function Form() {
           />
           </Box>
 
-        {displayCourse ? <Box sx={{display:"flex" , flexDirection:"row", justifyContent:"space-between" ,gap:10 , alignItems:"center" , mt:5}}>
+        {displayCourse ? <Box sx={{display:"flex" , flexDirection:"row", justifyContent:"space-between" ,gap:24 , alignItems:"center" , mt:5}}>
           <Typography sx={{color:"#cad9d2" ,textAlign:"left" , fontFamily: montserrat.style , fontSize:"36px" , textShadow: "2px 2px 4px #000000"}} level="body1">Course Name</Typography>
 
           <Autocomplete
             sx={{mt:3}}
-            style={{width:"55vw"}}
+            style={{width:"40vw"}}
             size='small'
             id="course_name"
             name='course_name'
@@ -203,7 +203,7 @@ export default function Form() {
             }}
             ListboxProps={{
               style: {
-                backgroundColor: "#edeff3",
+                backgroundColor: "#cad9d2",
                 color:"#c66450"
               },
             }}
@@ -211,17 +211,17 @@ export default function Form() {
         </Box> : null}
 
 
-        <Box sx={{display:"flex" , flexDirection:"row", justifyContent:"space-between"  ,gap:16, alignItems:"center" , mt:5}}>
+        <Box sx={{display:"flex" , flexDirection:"row", justifyContent:"space-between"  ,gap:32, alignItems:"center" , mt:5}}>
           <Typography sx={{color:"#cad9d2" , fontFamily: montserrat.style , fontSize:"36px" , textShadow: "2px 2px 4px #000000"}} level="body1">Drive Link</Typography>
-          <TextField size='small' sx={{input: { textAlign: 'left' , color: "#c66450" , fontSize: "21px" , fontWeight:"700" } , mt:3 , mb:3, backgroundColor: '#cad9d2' , '& .MuiOutlinedInput-root': {'& fieldset': {border : "none"} ,'&:hover': {backgroundColor: 'rgba(0,0,0,0.5)',input : {color: "#EEEDEB"} , transition: 'background-color 0.15s ease-in-out'}} , boxShadow: '5px 5px 8px 1px rgba(0, 0, 0, 1)'}} style={{width:"53vw"}} id="link" name="link" variant="outlined" onChange={handleChange} value={formData.link}/>
+          <TextField size='small' sx={{input: { textAlign: 'left' , color: "#c66450" , fontSize: "21px" , fontWeight:"700" } , mt:3 , mb:3, backgroundColor: '#cad9d2' , '& .MuiOutlinedInput-root': {'& fieldset': {border : "none"} ,'&:hover': {backgroundColor: 'rgba(0,0,0,0.5)',input : {color: "#EEEDEB"} , transition: 'background-color 0.15s ease-in-out'}} , boxShadow: '5px 5px 8px 1px rgba(0, 0, 0, 1)'}} style={{width:"40vw"}} id="link" name="link" variant="outlined" onChange={handleChange} value={formData.link}/>
           </Box>
 
-        <Box sx={{display:"flex" , flexDirection:"row", justifyContent:"space-between" ,gap:17 , alignItems:"center" , mt:5}}>
+        <Box sx={{display:"flex" , flexDirection:"row", justifyContent:"space-between" ,gap:34 , alignItems:"center" , mt:5}}>
           <Typography sx={{color:"#cad9d2" , fontFamily: montserrat.style , fontSize:"36px" , textShadow: "2px 2px 4px #000000"}} level="body1">Remarks</Typography>
-          <TextField size='small' sx={{input: { textAlign: 'left' , color: "#c66450" , fontSize: "21px" , fontWeight:"700" } , mt:3 , mb:3, backgroundColor: '#cad9d2' , '& .MuiOutlinedInput-root': {'& fieldset': {border : "none"} ,'&:hover': {backgroundColor: 'rgba(0,0,0,0.5)',input : {color: "#EEEDEB"} , transition: 'background-color 0.15s ease-in-out'}} , boxShadow: '5px 5px 8px 1px rgba(0, 0, 0, 1)'}} style={{width:"50vw"}} id="remarks" name="remarks" variant="outlined" onChange={handleChange} value={formData.remarks}/>
+          <TextField size='small' sx={{input: { textAlign: 'left' , color: "#c66450" , fontSize: "21px" , fontWeight:"700" } , mt:3 , mb:3, backgroundColor: '#cad9d2' , '& .MuiOutlinedInput-root': {'& fieldset': {border : "none"} ,'&:hover': {backgroundColor: 'rgba(0,0,0,0.5)',input : {color: "#EEEDEB"} , transition: 'background-color 0.15s ease-in-out'}} , boxShadow: '5px 5px 8px 1px rgba(0, 0, 0, 1)'}} style={{width:"40vw"}} id="remarks" name="remarks" variant="outlined" onChange={handleChange} value={formData.remarks}/>
           </Box>
 
-        <Button type='submit' sx={{width:"35vw", height:"60px" , fontSize:"32px"  , fontWeight:"bold", letterSpacing:"0" ,  backgroundColor:"#cad9d2" , color:"#c66450" , mt:6 , boxShadow: '5px 8px 10px rgba(0, 0, 0, 1)'}}>Submit</Button>
+        <Button type='submit' sx={{width:"25vw", height:"60px" , fontSize:"32px"  , fontWeight:"bold", letterSpacing:"0" ,  backgroundColor:"#cad9d2" , color:"#c66450" , mt:6 , boxShadow: '5px 8px 10px rgba(0, 0, 0, 1)'}}>Submit</Button>
         </Box>
       </Box>
     </form>
