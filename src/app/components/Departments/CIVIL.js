@@ -1,0 +1,26 @@
+const civil = [
+    { key: 1, name: "ARCHITECTURE DRAWING & BUILDING CONSTRUCTION" },
+    { key: 2, name: "BUILDING MATERIALS" },
+    { key: 3, name: "THERMO-FLUIDS" },
+    { key: 4, name: "SURVEYING" },
+    { key: 5, name: "STRUCTURAL ANALYSIS" },
+    { key: 6, name: "DESIGN OF CONCRETE STRUCTURES-I" },
+    { key: 7, name: "HYDROLOGY AND GROUND WATER" },
+    { key: 8, name: "SOIL MECHANICS" },
+    { key: 9, name: "ADVANCED STRUCTURAL ANALYSIS" },
+    { key: 10, name: "CONSTRUCTION MANAGEMENT" },
+    { key: 11, name: "TRANSPORTATION ENGINEERING - I" },
+    { key: 12, name: "SURVEY PROJECT" },
+    { key: 13, name: "DESIGN OF STEEL STRUCTURES - I" },
+    { key: 14, name: "INNOVATION AND ENTREPRENRESHIP" },
+    { key: 15, name: "HYDRAULIC ENGINEERING" },
+    { key: 16, name: "TRANSPORTATION ENGINEERING - II" },
+    { key: 17, name: "WATER AND WASTE WATER ENGINEERING" },
+    { key: 18, name: "FOUNDATION ENGINEERING" },
+    { key: 19, name: "DESIGN OF CONCRETE STRUCTURES- II" },
+    { key: 20, name: "SEISMIC ANALYSIS AND DESIGN" },
+    { key: 21, name: "DESIGN OF STEEL STRUCTURES II" },
+    { key: 22, name: "DESIGN OF HYDRAULIC STRUCTURES" },
+]
+
+export default civil;
