@@ -13,7 +13,6 @@ import common from './Departments/COMMON';
 import computer from './Departments/COMPUTER';
 import ece from './Departments/ECE';
 import eic from './Departments/EIC';
-import other from './Departments/other';
 import mechanical from './Departments/MECHANICAL';
 import year from './year';
 import { Lilita_One } from 'next/font/google';
@@ -80,14 +79,14 @@ export default function Form() {
       alert("Please fill year!");
     }else{
         const submissionData = {
-            "entry.1337227058": formData.name,
-            "entry.984075185": formData.email,
-            "entry.361790054" : formData.department,
-            "entry.1102107939": formData.course_name,
-            "entry.1394333823": formData.link,
-            "entry.503119442":formData.remarks,
-            "entry.1263328218":formData.phone,
-            "entry.1434756459":formData.year
+            "entry.1351984193": formData.name,
+            "entry.1255955318": formData.email,
+            "entry.603138670" : formData.department,
+            "entry.97718587": formData.course_name,
+            "entry.790904947": formData.link,
+            "entry.903282350":formData.remarks,
+            "entry.926425033":formData.phone,
+            "entry.515462606":formData.year
         };
         const response = await axios.post('https://videosubmissionform-aahil-khans-projects.vercel.app/api/send_data',submissionData);
         window.location.href = '/submit';
