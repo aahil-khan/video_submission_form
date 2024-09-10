@@ -14,6 +14,7 @@ import computer from './Departments/COMPUTER';
 import ece from './Departments/ECE';
 import eic from './Departments/EIC';
 import mechanical from './Departments/MECHANICAL';
+import year from './year';
 import { Lilita_One } from 'next/font/google';
 
 const montserrat = Lilita_One({ subsets: ["latin"], weight: "400"});
@@ -37,6 +38,8 @@ export default function Form() {
   
   const [course , setCourse] = React.useState([]);
 
+  const [displayOther, setDisplayOther] = React.useState(false);
+
   const [displayCourse , setDisplayCourse] = React.useState(true);
 
   const [formData, setFormData] = React.useState({
@@ -47,6 +50,7 @@ export default function Form() {
     link: '',
     remarks:'',
     phone: '',
+    year: '',
   });
 
   const handleSubmit = async (e) => {
@@ -68,15 +72,18 @@ export default function Form() {
       alert("Please fill remarks! (none if not required)");
     }else if(formData.phone.length<10){
       alert("Phone Number Invalid!");
+    }else if(formData.year===""){
+      alert("Please fill year!");
     }else{
         const submissionData = {
-            "entry.1914479458": formData.name,
-            "entry.1140423365": formData.email,
-            "entry.688139060" : formData.department,
-            "entry.346488187": formData.course_name,
-            "entry.1163931876": formData.link,
-            "entry.887102447":formData.remarks,
-            "entry.1165401347":formData.phone
+            "entry.1337227058": formData.name,
+            "entry.984075185": formData.email,
+            "entry.361790054" : formData.department,
+            "entry.1102107939": formData.course_name,
+            "entry.1394333823": formData.link,
+            "entry.503119442":formData.remarks,
+            "entry.1263328218":formData.phone,
+            "entry.1434756459":formData.year
         };
         const response = await axios.post('https://videosubmissionform-aahil-khans-projects.vercel.app/api/send_data',submissionData);
         window.location.href = '/submit';
@@ -103,38 +110,43 @@ export default function Form() {
     department: newValue,
     }));
 
+    if(department == "Common Subjects and Miscellaneous"){
+      setDisplayOther(true);
+    }else{
+      setDisplayOther(false);
+    }
+
+    if(department == "Centre for Training and Development" || department == "Experiential Learning Centre" || department == "Venture Lab"){
+      setDisplayCourse(false);
+    }else{
+      setDisplayCourse(true);
+    }
+
+    
+
     if(department == "Department of Biotechnology"){
       setCourse(biotechnology);
-      setDisplayCourse(true);
     }else if(department == "Chemical Engineering"){
       setCourse(chemical);
-      setDisplayCourse(true);
     }else if(department == "Civil Engineering"){
       setCourse(civil);
-      setDisplayCourse(true);
     }else if(department == "Common Subjects and Miscellaneous"){
+      setDisplayOther(true);
       setCourse(common);
-      setDisplayCourse(true);
     }else if(department == "Computer Science & Engineering"){
       setCourse(computer);
-      setDisplayCourse(true);
     }else if(department == "Electronics & Communication Engineering"){
       setCourse(ece);
-      setDisplayCourse(true);
     }else if(department == "Electrical & Instrumentation Engineering"){
       setCourse(eic);
-      setDisplayCourse(true);
     }else if(department == "Mechanical Engineering Department"){
       setCourse(mechanical);
-      setDisplayCourse(true);
-    }else{
-      setDisplayCourse(false);
     }
   }
 
   return (
     <form onSubmit={handleSubmit}>
-      <Box sx={{ width: "70vw", height: "100%", border: "2px solid #edeff3" , p: 4 , backgroundColor:"rgba(198, 100, 80,0.7)" ,  borderRadius:8 , boxShadow: '5px 5px 10px 10px rgba(24, 24, 24,0.7)'}} display="flex" flexDirection="column" alignItems="center" justifyContent="top" marginTop={5}>
+      <Box sx={{ width: "70vw", height: "100%", border: "2px solid #edeff3" , p: 4  ,  borderRadius:8 , boxShadow: '0px 0px 10px 10px rgba(24, 24, 24,0.7)'}} display="flex" flexDirection="column" alignItems="center" justifyContent="top" marginTop={5}>
         <img style={{ marginTop: "0px" , width:"100%"  , height:isSmallScreen ? "90px" :"270px" , borderRadius:8}} src={isSmallScreen ?"/banner-small.png" :"/banner.png"} width={100} height={100} alt='image' />
         <Box sx={{width : "100%" , mt : "10px", p: 1, borderRadius: 3}} display="flex" flexDirection="column" alignItems="center">
           
@@ -163,7 +175,7 @@ export default function Form() {
             id="department"
             name='department'
             options={departments.map((option) => option.name)}
-            renderInput={(params) => <TextField {...params} sx={{input:{color: "#c66450", fontSize: "21px", fontWeight:"700"  , textAlign:"center" , borderRadius:"8"} , mb:3, backgroundColor: '#edeff3' , '& .MuiOutlinedInput-root': {'& fieldset': {border: 'none'} ,'&:hover': {backgroundColor: 'rgba(0,0,0,0.5)',input : {color: "#EEEDEB"} , transition: 'background-color 0.15s ease-in-out' , borderRadius: 8 }} , borderRadius: 8, boxShadow: '5px 5px 8px 1px rgba(0, 0, 0, 1)'}} variant="outlined" />}
+            renderInput={(params) => <TextField {...params} sx={{input:{color: "#c66450", fontSize: "21px", fontWeight:"700"  , textAlign:"center" , borderRadius:"8"} , mb:0, backgroundColor: '#edeff3' , '& .MuiOutlinedInput-root': {'& fieldset': {border: 'none'} ,'&:hover': {backgroundColor: 'rgba(0,0,0,0.5)',input : {color: "#EEEDEB"} , transition: 'background-color 0.15s ease-in-out' , borderRadius: 8 }} , borderRadius: 8, boxShadow: '5px 5px 8px 1px rgba(0, 0, 0, 1)'}} variant="outlined" />}
             paperprops={{
               style: {
                 backgroundColor: "#FFF",
@@ -178,9 +190,10 @@ export default function Form() {
             onChange={handleDepartment}
             value={formData.department}
           />
+          <Typography sx={{mt:1,mb:1,color:"#ffffff" ,textAlign:"center" , fontFamily: montserrat.style , fontSize:"16px" , textShadow: "2px 2px 4px #000000"}} level="body1">Please select Common Subjects and Miscellaneous if your department is not listed</Typography>
           </Box>
 
-        {displayCourse ? <Box sx={{display:"flex" , flexDirection:"column" , alignItems:"center" , mt:5}}>
+        <Box sx={{display:"flex" , flexDirection:"column" , alignItems:"center" , mt:5}}>
           <Typography sx={{color:"#ffffff" ,textAlign:"center" , fontFamily: montserrat.style , fontSize:"36px" , textShadow: "2px 2px 4px #000000"}} level="body1">COURSE NAME</Typography>
 
           <Autocomplete
@@ -195,7 +208,7 @@ export default function Form() {
               course_name: newValue,
             }))}
             value={formData.course_name}
-            renderInput={(params) => <TextField {...params} sx={{input:{color: "#c66450", fontSize: "21px", fontWeight:"700"  , textAlign:"center" , borderRadius:"8"} , mb:3, backgroundColor: '#edeff3' , '& .MuiOutlinedInput-root': {'& fieldset': {border: 'none'} ,'&:hover': {backgroundColor: 'rgba(0,0,0,0.5)',input : {color: "#EEEDEB"} , transition: 'background-color 0.15s ease-in-out' , borderRadius: 8}} , borderRadius: 8, boxShadow: '5px 5px 8px 1px rgba(0, 0, 0, 1)'}} variant="outlined" />}
+            renderInput={(params) => <TextField {...params} sx={{input:{color: "#c66450", fontSize: "21px", fontWeight:"700"  , textAlign:"center" , borderRadius:"8"} , mb:0, backgroundColor: '#edeff3' , '& .MuiOutlinedInput-root': {'& fieldset': {border: 'none'} ,'&:hover': {backgroundColor: 'rgba(0,0,0,0.5)',input : {color: "#EEEDEB"} , transition: 'background-color 0.15s ease-in-out' , borderRadius: 8}} , borderRadius: 8, boxShadow: '5px 5px 8px 1px rgba(0, 0, 0, 1)'}} variant="outlined" />}
             paperprops={{
               style: {
                 backgroundColor: "#FFF",
@@ -208,8 +221,41 @@ export default function Form() {
               },
             }}
           />
-        </Box> : null}
+          
+          {displayOther ? <Typography sx={{mt:1,mb:1,color:"#ffffff" ,textAlign:"center" , fontFamily: montserrat.style , fontSize:"16px" , textShadow: "2px 2px 4px #000000"}} level="body1">Please select Other if you still dont see your course</Typography> : null}
 
+        </Box>
+
+        <Box sx={{display:"flex" , flexDirection:"column" , alignItems:"center" , mt:5}}>
+          <Typography sx={{color:"#ffffff" ,textAlign:"center" , fontFamily: montserrat.style , fontSize:"36px" , textShadow: "2px 2px 4px #000000"}} level="body1">YEAR</Typography>
+
+          <Autocomplete
+            sx={{mt:3}}
+            style={{width:"55vw"}}
+            size='small'
+            id="year"
+            name='year'
+            options={year.map((option) => option.name)}
+            onChange={(event, newValue) => setFormData((prevState) => ({
+              ...prevState,
+              year: newValue,
+            }))}
+            value={formData.year}
+            renderInput={(params) => <TextField {...params} sx={{input:{color: "#c66450", fontSize: "21px", fontWeight:"700"  , textAlign:"center" , borderRadius:"8"} , mb:0, backgroundColor: '#edeff3' , '& .MuiOutlinedInput-root': {'& fieldset': {border: 'none'} ,'&:hover': {backgroundColor: 'rgba(0,0,0,0.5)',input : {color: "#EEEDEB"} , transition: 'background-color 0.15s ease-in-out' , borderRadius: 8}} , borderRadius: 8, boxShadow: '5px 5px 8px 1px rgba(0, 0, 0, 1)'}} variant="outlined" />}
+            paperprops={{
+              style: {
+                backgroundColor: "#FFF",
+              },
+            }}
+            ListboxProps={{
+              style: {
+                backgroundColor: "#edeff3",
+                color:"#c66450"
+              },
+            }}
+          />
+      
+        </Box>
 
         <Box sx={{display:"flex" , flexDirection:"column" , alignItems:"center" , mt:5}}>
           <Typography sx={{color:"#ffffff" , fontFamily: montserrat.style , fontSize:"36px" , textShadow: "2px 2px 4px #000000"}} level="body1">DRIVE LINK</Typography>
@@ -217,8 +263,9 @@ export default function Form() {
           </Box>
 
         <Box sx={{display:"flex" , flexDirection:"column" , alignItems:"center" , mt:5}}>
-          <Typography sx={{color:"#ffffff" , fontFamily: montserrat.style , fontSize:"36px" , textShadow: "2px 2px 4px #000000"}} level="body1">REMARKS</Typography>
+          <Typography sx={{color:"#ffffff" , fontFamily: montserrat.style , fontSize:"36px" , textShadow: "2px 2px 4px #000000"}} level="body1" >REMARKS (OPTIONAL)</Typography>
           <TextField size='small' sx={{input: { textAlign: 'center' , color: "#c66450" , fontSize: "21px" , fontWeight:"700"  , borderRadius:"8" } , mt:3 , mb:3, backgroundColor: '#edeff3' , '& .MuiOutlinedInput-root': {'& fieldset': {border : "none"} ,'&:hover': {backgroundColor: 'rgba(0,0,0,0.5)',input : {color: "#EEEDEB"} , transition: 'background-color 0.15s ease-in-out' , borderRadius: 8}} , borderRadius: 8 , boxShadow: '5px 5px 8px 1px rgba(0, 0, 0, 1)'}} style={{width:"55vw"}} id="remarks" name="remarks" variant="outlined" onChange={handleChange} value={formData.remarks}/>
+          <Typography sx={{mt:1,mb:1,color:"#ffffff" ,textAlign:"center" , fontFamily: montserrat.style , fontSize:"16px" , textShadow: "2px 2px 4px #000000"}} level="body1">please enter none if not required</Typography>
           </Box>
 
         <Button type='submit' sx={{width:"35vw", height:"60px" , fontSize:"32px"  , fontWeight:"bold", letterSpacing:"0" ,  backgroundColor:"#edeff3" , color:"#c66450" , mt:6 , borderRadius:"32px" , '&:hover': {backgroundColor: 'rgba(0,0,0,0.5)' , color:"#EEEDEB" , transition: 'background-color 0.15s ease-in-out'} , boxShadow: '5px 8px 10px rgba(0, 0, 0, 1)'}}>Submit</Button>

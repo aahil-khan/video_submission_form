@@ -9,7 +9,7 @@ const ParticlesComponent = (props) => {
       "autoPlay": true,
       "background": {
         "color": {
-          "value": "#c66450"
+          "value": "#8d211b"
         },
         "image": "",
         "position": "",
