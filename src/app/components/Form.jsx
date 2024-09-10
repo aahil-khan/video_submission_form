@@ -79,14 +79,14 @@ export default function Form() {
       alert("Please fill year!");
     }else{
         const submissionData = {
-            "entry.1351984193": formData.name,
-            "entry.1255955318": formData.email,
-            "entry.603138670" : formData.department,
-            "entry.97718587": formData.course_name,
-            "entry.790904947": formData.link,
-            "entry.903282350":formData.remarks,
-            "entry.926425033":formData.phone,
-            "entry.515462606":formData.year
+            "entry.1914479458": formData.name,
+            "entry.1140423365": formData.email,
+            "entry.688139060" : formData.department,
+            "entry.346488187": formData.course_name,
+            "entry.1163931876": formData.link,
+            "entry.887102447":formData.remarks,
+            "entry.1165401347":formData.phone,
+            "entry.713955577":formData.year
         };
         const response = await axios.post('https://videosubmissionform-aahil-khans-projects.vercel.app/api/send_data',submissionData);
         window.location.href = '/submit';
