@@ -54,6 +54,9 @@ export default function Form() {
   });
 
   const handleSubmit = async (e) => {
+
+    console.log(formData);
+
     e.preventDefault();
 
     if(formData.email === ""){
@@ -98,7 +101,6 @@ export default function Form() {
       ...prevState,
       [name]: value,
     }));
-    console.log(isSmallScreen);
   };
 
   const handleDepartment = (event, newValue) => {
@@ -193,7 +195,7 @@ export default function Form() {
           <Typography sx={{mt:1,mb:1,color:"#ffffff" ,textAlign:"center" , fontFamily: montserrat.style , fontSize:"16px" , textShadow: "2px 2px 4px #000000"}} level="body1">Please select Common Subjects and Miscellaneous if your department is not listed</Typography>
           </Box>
 
-        <Box sx={{display:"flex" , flexDirection:"column" , alignItems:"center" , mt:5}}>
+       {displayCourse ? <Box sx={{display:"flex" , flexDirection:"column" , alignItems:"center" , mt:5}}>
           <Typography sx={{color:"#ffffff" ,textAlign:"center" , fontFamily: montserrat.style , fontSize:"36px" , textShadow: "2px 2px 4px #000000"}} level="body1">COURSE NAME</Typography>
 
           <Autocomplete
@@ -224,7 +226,12 @@ export default function Form() {
           
           {displayOther ? <Typography sx={{mt:1,mb:1,color:"#ffffff" ,textAlign:"center" , fontFamily: montserrat.style , fontSize:"16px" , textShadow: "2px 2px 4px #000000"}} level="body1">Please select Other if you still dont see your course</Typography> : null}
 
-        </Box>
+        </Box> : 
+        
+        <Box sx={{display:"flex" , flexDirection:"column" , alignItems:"center" , mt:5}}>
+            <Typography sx={{color:"#ffffff" , fontFamily: montserrat.style , fontSize:"36px" , textShadow: "2px 2px 4px #000000"}} level="body1">COURSE NAME</Typography>
+            <TextField size='small' sx={{input: { textAlign: 'center' , color: "#c66450" , fontSize: "21px" , fontWeight:"700" , borderRadius:"8" } , mt:3 , mb:3, backgroundColor: '#edeff3' , '& .MuiOutlinedInput-root': {'& fieldset': {border : "none"} ,'&:hover': {backgroundColor: 'rgba(0,0,0,0.5)',input : {color: "#EEEDEB"} , transition: 'background-color 0.15s ease-in-out' , borderRadius: 8}} , borderRadius: 8, boxShadow: '5px 5px 8px 1px rgba(0, 0, 0, 1)'}} style={{width:"55vw"}} id="course_name" name="course_name" variant="outlined" onChange={handleChange} value={formData.course_name}/>
+        </Box>}
 
         <Box sx={{display:"flex" , flexDirection:"column" , alignItems:"center" , mt:5}}>
           <Typography sx={{color:"#ffffff" ,textAlign:"center" , fontFamily: montserrat.style , fontSize:"36px" , textShadow: "2px 2px 4px #000000"}} level="body1">YEAR</Typography>
