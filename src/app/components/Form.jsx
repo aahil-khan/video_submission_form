@@ -13,6 +13,7 @@ import common from './Departments/COMMON';
 import computer from './Departments/COMPUTER';
 import ece from './Departments/ECE';
 import eic from './Departments/EIC';
+import other from './Departments/other';
 import mechanical from './Departments/MECHANICAL';
 import year from './year';
 import { Lilita_One } from 'next/font/google';
