@@ -4,7 +4,6 @@ import Particles from '../components/Particles';
 import Box from '@mui/material/Box';
 import { Container } from '@mui/material';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 import {Raleway} from 'next/font/google';
 import Link from '@mui/material/Link';
 
@@ -14,7 +13,7 @@ export default function Home() {
   return (
     <Container sx={{display: "flex" ,flexDirection: "column",  alignItems : "center" , justifyContent: "center"}}>
         <Box sx={{ width: "45vw", mt : "15%" ,  height: "30vh", border: "1px solid #98DED9" , p:9 , borderRadius:8 , boxShadow: '0px 0px 10px 15px rgba(15, 25, 32, 0.7)'}} display="flex" flexDirection="column" alignItems="center" justifyContent="center" marginTop={5}>
-            <Typography sx={{color:"#98DED9" , textAlign:"center" , fontWeight:"bold", fontFamily: montserrat.style , fontSize:"36px"}} level="body1">FORM SUBMITTED SUCCESSFULLY!</Typography>
+            <Typography sx={{color:"#ffffff" , textAlign:"center" , fontWeight:"bold", fontFamily: montserrat.style , fontSize:"36px"}} level="body1">FORM SUBMITTED SUCCESSFULLY!</Typography>
             <Link
               href='/'
               sx={{

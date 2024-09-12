@@ -6,11 +6,12 @@ export async function POST(request){
     const submissionData = await request.json();
     try {
         const response = await axios.post(
-          'https://docs.google.com/forms/u/0/d/e/1FAIpQLScDMrk79MTevOeJK1xTqPP1UW9f7az0oFrPJDBlnERvGmzjYw/formResponse',
+          'https://docs.google.com/forms/u/1/d/e/1FAIpQLSfrnBUuEvRZnGYl48K688lL3vKwCUO-LZJXUTfVDEwqYzAqiw/formResponse',
         qs.stringify(submissionData),
         {
             headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
+            "Access-Control-Allow-Origin": "*",
             },
         }
         );
