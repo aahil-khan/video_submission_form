@@ -42,14 +42,19 @@ export default function Form() {
 
   const [displayCourse , setDisplayCourse] = React.useState(true);
 
+  const [displayOtherInput , setDisplayOtherInput] = React.useState(false);
+
+
   const [formData, setFormData] = React.useState({
     name: '',
     email:'',
     department: '',
     course_name: '',
     link: '',
+    youtube_link:'',
     remarks:'',
     phone: '',
+    other: '',
     year: '',
   });
 
@@ -86,7 +91,9 @@ export default function Form() {
             "entry.1533066728": formData.link,
             "entry.137175386":formData.remarks,
             "entry.1082736846":formData.phone,
-            "entry.1550864636":formData.year
+            "entry.1550864636":formData.year,
+            "entryforyoutube":formData.youtube_link,
+            "entryforother":formData.other
         };
         const response = await axios.post('https://videosubmissionform-aahil-khans-projects.vercel.app/api/send_data',submissionData);
         window.location.href = '/submit';
@@ -205,10 +212,17 @@ export default function Form() {
             id="course_name"
             name='course_name'
             options={course.map((option) => option.name)}
-            onChange={(event, newValue) => setFormData((prevState) => ({
-              ...prevState,
-              course_name: newValue,
-            }))}
+            onChange={(event, newValue) => {
+              if(newValue === "OTHER"){
+                setDisplayOtherInput(true);
+              }else{
+                setDisplayOtherInput(false);
+              }
+              setFormData((prevState) => ({
+                ...prevState,
+                course_name: newValue,
+              }));
+            }}
             value={formData.course_name}
             renderInput={(params) => <TextField {...params} sx={{input:{color: "#c66450", fontSize: "21px", fontWeight:"700"  , textAlign:"center" , borderRadius:"8"} , mb:0, backgroundColor: '#edeff3' , '& .MuiOutlinedInput-root': {'& fieldset': {border: 'none'} ,'&:hover': {backgroundColor: 'rgba(0,0,0,0.5)',input : {color: "#EEEDEB"} , transition: 'background-color 0.15s ease-in-out' , borderRadius: 8}} , borderRadius: 8, boxShadow: '5px 5px 8px 1px rgba(0, 0, 0, 1)'}} variant="outlined" />}
             paperprops={{
@@ -232,6 +246,11 @@ export default function Form() {
             <Typography sx={{color:"#ffffff" , fontFamily: montserrat.style , fontSize:"36px" , textShadow: "2px 2px 4px #000000"}} level="body1">COURSE NAME</Typography>
             <TextField size='small' sx={{input: { textAlign: 'center' , color: "#c66450" , fontSize: "21px" , fontWeight:"700" , borderRadius:"8" } , mt:3 , mb:3, backgroundColor: '#edeff3' , '& .MuiOutlinedInput-root': {'& fieldset': {border : "none"} ,'&:hover': {backgroundColor: 'rgba(0,0,0,0.5)',input : {color: "#EEEDEB"} , transition: 'background-color 0.15s ease-in-out' , borderRadius: 8}} , borderRadius: 8, boxShadow: '5px 5px 8px 1px rgba(0, 0, 0, 1)'}} style={{width:"55vw"}} id="course_name" name="course_name" variant="outlined" onChange={handleChange} value={formData.course_name}/>
         </Box>}
+
+        {displayOtherInput ? <Box sx={{display:"flex" , flexDirection:"column" , alignItems:"center" , mt:5}}>
+            <Typography sx={{color:"#ffffff" , fontFamily: montserrat.style , fontSize:"36px" , textShadow: "2px 2px 4px #000000"}} level="body1">PLEASE SPECIFY</Typography>
+            <TextField size='small' sx={{input: { textAlign: 'center' , color: "#c66450" , fontSize: "21px" , fontWeight:"700" , borderRadius:"8" } , mt:3 , mb:3, backgroundColor: '#edeff3' , '& .MuiOutlinedInput-root': {'& fieldset': {border : "none"} ,'&:hover': {backgroundColor: 'rgba(0,0,0,0.5)',input : {color: "#EEEDEB"} , transition: 'background-color 0.15s ease-in-out' , borderRadius: 8}} , borderRadius: 8, boxShadow: '5px 5px 8px 1px rgba(0, 0, 0, 1)'}} style={{width:"55vw"}} id="other" name="other" variant="outlined" onChange={handleChange} value={formData.other}/>
+        </Box> : null}
 
         <Box sx={{display:"flex" , flexDirection:"column" , alignItems:"center" , mt:5}}>
           <Typography sx={{color:"#ffffff" ,textAlign:"center" , fontFamily: montserrat.style , fontSize:"36px" , textShadow: "2px 2px 4px #000000"}} level="body1">YEAR</Typography>
@@ -268,6 +287,12 @@ export default function Form() {
           <Typography sx={{color:"#ffffff" , fontFamily: montserrat.style , fontSize:"36px" , textShadow: "2px 2px 4px #000000"}} level="body1">DRIVE LINK</Typography>
           <TextField size='small' sx={{input: { textAlign: 'center' , color: "#c66450" , fontSize: "21px" , fontWeight:"700"  , borderRadius:"8" } , mt:3 , mb:3, backgroundColor: '#edeff3' , '& .MuiOutlinedInput-root': {'& fieldset': {border : "none"} ,'&:hover': {backgroundColor: 'rgba(0,0,0,0.5)',input : {color: "#EEEDEB"} , transition: 'background-color 0.15s ease-in-out' , borderRadius: 8}} , borderRadius: 8, boxShadow: '5px 5px 8px 1px rgba(0, 0, 0, 1)'}} style={{width:"55vw"}} id="link" name="link" variant="outlined" onChange={handleChange} value={formData.link}/>
           </Box>
+
+        <Box sx={{display:"flex" , flexDirection:"column" , alignItems:"center" , mt:5}}> 
+        <Typography sx={{color:"#ffffff" , fontFamily: montserrat.style , fontSize:"36px" , textShadow: "2px 2px 4px #000000"}} level="body1" >YOUTUBE LINK (OPTIONAL)</Typography>
+        <TextField size='small' sx={{input: { textAlign: 'center' , color: "#c66450" , fontSize: "21px" , fontWeight:"700"  , borderRadius:"8" } , mt:3 , mb:3, backgroundColor: '#edeff3' , '& .MuiOutlinedInput-root': {'& fieldset': {border : "none"} ,'&:hover': {backgroundColor: 'rgba(0,0,0,0.5)',input : {color: "#EEEDEB"} , transition: 'background-color 0.15s ease-in-out' , borderRadius: 8}} , borderRadius: 8 , boxShadow: '5px 5px 8px 1px rgba(0, 0, 0, 1)'}} style={{width:"55vw"}} id="youtube_link" name="youtube_link" variant="outlined" onChange={handleChange} value={formData.youtube_link}/>
+        <Typography sx={{mt:1,mb:1,color:"#ffffff" ,textAlign:"center" , fontFamily: montserrat.style , fontSize:"16px" , textShadow: "2px 2px 4px #000000"}} level="body1">please enter none if not required</Typography>
+        </Box>
 
         <Box sx={{display:"flex" , flexDirection:"column" , alignItems:"center" , mt:5}}>
           <Typography sx={{color:"#ffffff" , fontFamily: montserrat.style , fontSize:"36px" , textShadow: "2px 2px 4px #000000"}} level="body1" >REMARKS (OPTIONAL)</Typography>
