@@ -92,8 +92,8 @@ export default function Form() {
             "entry.137175386":formData.remarks,
             "entry.1082736846":formData.phone,
             "entry.1550864636":formData.year,
-            "entryforyoutube":formData.youtube_link,
-            "entryforother":formData.other
+            "entry.263896974":formData.youtube_link,
+            "entry.1896970285":formData.other
         };
         const response = await axios.post('https://videosubmissionform-aahil-khans-projects.vercel.app/api/send_data',submissionData);
         window.location.href = '/submit';
